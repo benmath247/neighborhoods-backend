@@ -27,7 +27,7 @@ class BoardMember(models.Model):
 class BoardMinutes(models.Model):
     neighborhood = models.ForeignKey(Group, on_delete=models.CASCADE)
     date = models.DateField(null=True, blank=True)
-    content = RichTextField()
+    content = RichTextField(null=True, blank=True)
     file = models.FileField(upload_to='board_minutes/', null=True, blank=True)
 
     def __str__(self):
@@ -65,7 +65,7 @@ class Blog1(models.Model):
     picture = models.ImageField(upload_to='images/', null=True, blank=True)
     title = models.CharField(max_length=255)
     author = models.CharField(max_length=300, null=True, blank=True)
-    content = RichTextField()
+    content = RichTextField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     categories = models.ManyToManyField(Blog1Category, blank=True)
@@ -81,7 +81,7 @@ class Blog2(models.Model):
     picture = models.ImageField(upload_to='images/', null=True, blank=True)
     title = models.CharField(max_length=255)
     author = models.CharField(max_length=300, null=True, blank=True)
-    content = RichTextField()
+    content = RichTextField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     categories = models.ManyToManyField(Blog2Category, blank=True)
