@@ -1,0 +1,137 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block extrahead %}
+<style>
+    :root {
+        --primary: #001737;
+        /* Dark blue, Philadelphia 76ers primary color */
+        --secondary: #ED174C;
+        /* Philadelphia 76ers red */
+        --background-color: #141414;
+        /* Dark gray background */
+        --editor-foreground-color: #6D574E;
+        /* Brownish foreground color */
+        --editor-background-color: #1E1E1E;
+        /* Dark gray background */
+        --selection-background-color: #0047AB;
+        /* Philadelphia 76ers blue for selection */
+        --active-line-background-color: #0047AB;
+        /* Philadelphia 76ers blue for active line */
+        --inactive-selection-background-color: #ED174C;
+        /* Philadelphia 76ers red for inactive selection */
+        --hairline-color: #ED174C;
+        /* Philadelphia 76ers red for hairline elements */
+        --link-fg: #61C0BF;
+        /* Teal for links */
+        --header-link-color: #e50541;
+        --header-color: #e50541;
+        /* Philadelphia 76ers blue for header links */
+        --accent: #8D99AE;
+        /* Pastel purple as accent color */
+        --body-bg: #141414;
+        /* Dark gray background */
+        --body-fg: #FDFDFD;
+        /* White text for foreground */
+        --darkened-bg: #ED174C;
+        /* Philadelphia 76ers red for darkened elements */
+        --header-bg: #0047AB;
+        /* Philadelphia 76ers blue for headers */
+        --breadcrumbs-bg: #ED174C;
+        /* Philadelphia 76ers red for breadcrumbs */
+        --breadcrumbs-fg: #FDFDFD;
+        /* White text on breadcrumbs */
+        --breadcrumbs-link-fg: #F4A261;
+        /* Warm orange for breadcrumb links */
+        --selected-bg: #6D574E;
+        /* Brownish background for selected elements */
+        --selected-row: none;
+        --body-quiet-color: #8D99AE;
+        /* Pastel purple for quiet text */
+        --object-tools-fg: #FDFDFD;
+        /* White text for object tools */
+        --button-bg: #ED174C;
+        /* Philadelphia 76ers red for buttons */
+        --default-button-bg: #ED174C;
+        /* Philadelphia 76ers red for default buttons */
+        --font-family-monospace: 'SF Mono', 'Segoe UI Mono', monospace;
+        --font-family-primary: 'SF Mono', 'Segoe UI Mono', monospace;
+        --link-onhover-color: #ED174C;
+        /* Philadelphia 76ers red on link hover */
+        --body-loud-color: #ED174C;
+        /* Philadelphia 76ers red for loud text */
+    }
+
+
+
+
+
+    html[data-theme="dark"] {
+        --primary: #004953;
+        --secondary: #A5ACAF;
+        --background-color: #FFFFFF;
+        --editor-foreground-color: #004953;
+        --editor-background-color: #FFFFFF;
+        --selection-background-color: #004953;
+        --active-line-background-color: #A5ACAF;
+        --inactive-selection-background-color: #A5ACAF;
+        --hairline-color: #004953;
+        --link-fg: #004953;
+        --header-link-color: #FFFFFF;
+        --accent: #A5ACAF;
+        --body-bg: #FFFFFF;
+        --body-fg: #004953;
+        --darkened-bg: #A5ACAF;
+        --header-bg: #004953;
+        --breadcrumbs-bg: #A5ACAF;
+        --breadcrumbs-fg: #FFFFFF;
+        --breadcrumbs-link-fg: #004953;
+        --selected-bg: #004953;
+        --selected-row: none;
+        --body-quiet-color: #004953;
+        --object-tools-bg: #004953;
+        --object-tools-fg: #FFFFFF;
+        --button-bg: #004953;
+        --default-button-bg: #002a30;
+        --font-family-monospace: 'Courier New', monospace;
+        --font-family-primary: 'Arial', sans-serif;
+        --message-error-bg: ;
+        --link-onhover-color: black;
+    }
+
+    html[data-theme="light"] {
+        --link-onhover-color: var(--primary);
+    }
+
+    a:hover {
+        color: var(--link-onhover-color);
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+        let element = document.querySelector('#content-main > div.app-brandsite.module > table > caption > a');
+        if (element) {
+            element.textContent = 'Manage your neighborhood';
+            element.href = '#';
+        }
+        let element2 = document.querySelector('#nav-sidebar > div.app-brandsite.module.current-app > table > caption > a');
+        if (element2) {
+            element2.textContent = 'Manage your neighborhood';
+            element2.href = '#';
+        }
+    });
+</script>
+{% endblock %}
+
+{% block title %}Brandsite Generator{% endblock %}
+
+{% block branding %}
+<h1 id="site-name">
+    <a href="{% url 'admin:index' %}">
+        LOVE City Neighborhoods
+    </a>
+</h1>
+{% endblock %}
+
+{% block breadcrumbs %}{% endblock %}
