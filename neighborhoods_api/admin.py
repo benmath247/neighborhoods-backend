@@ -20,7 +20,7 @@ class BoardMinutesAdmin(admin.ModelAdmin):
 
 class Blog1Admin(admin.ModelAdmin):
     list_display = ['neighborhood', 'title', 'created_at', 'updated_at']
-    fields = ['title', 'content', 'categories']
+    fields = ['title', 'content', 'categories', 'picture']
 
     def save_model(self, request, obj, form, change):
         # Automatically set the neighborhood based on the user's group
@@ -36,7 +36,7 @@ class Blog1Admin(admin.ModelAdmin):
 
 class Blog2Admin(admin.ModelAdmin):
     list_display = ['neighborhood', 'title', 'created_at', 'updated_at']
-    fields = ['title', 'content', 'categories']
+    fields = ['title', 'content', 'categories', 'picture']
 
     def save_model(self, request, obj, form, change):
         # Automatically set the neighborhood based on the user's group
@@ -51,7 +51,6 @@ class Blog2Admin(admin.ModelAdmin):
         return queryset
 
 class Blog1CategoryAdmin(admin.ModelAdmin):
-    list_display = ['neighborhood', 'name']
 
     def save_model(self, request, obj, form, change):
         # Automatically set the neighborhood based on the user's group
@@ -66,7 +65,6 @@ class Blog1CategoryAdmin(admin.ModelAdmin):
         return queryset
 
 class Blog2CategoryAdmin(admin.ModelAdmin):
-    list_display = ['neighborhood', 'name']
 
     def save_model(self, request, obj, form, change):
         # Automatically set the neighborhood based on the user's group
@@ -81,7 +79,6 @@ class Blog2CategoryAdmin(admin.ModelAdmin):
         return queryset
     
 class CommitteeAdmin(admin.ModelAdmin):
-    list_display = ['neighborhood', 'name']
 
     def save_model(self, request, obj, form, change):
         # Automatically set the neighborhood based on the user's group

@@ -5,6 +5,22 @@ from .models import Blog1, Blog2, Blog1Category, Blog2Category, BoardMinutes
 from .serializers import Blog1Serializer, Blog2Serializer, Blog1CategorySerializer, Blog2CategorySerializer, BoardMinutesSerializer
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import Group
+from google.cloud import storage
+
+
+# Define the upload_file function for file uploads to Google Cloud Storage
+def upload_file(file_path, bucket_name):
+    storage_client = storage.Client()
+    bucket = storage_client.get_bucket(bucket_name)
+    blob = bucket.blob(file_path)
+    blob.upload_from_filename(file_path)
+
+# Define the get_file_url function to get the public URL of a file in the bucket
+def get_file_url(bucket_name, object_path):
+    storage_client = storage.Client()
+    bucket = storage_client.get_bucket(bucket_name)
+    blob = bucket.blob(object_path)
+    return blob.public_url
 
 
 # listing all blog1s for a neighborhood

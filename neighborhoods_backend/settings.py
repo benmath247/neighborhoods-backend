@@ -119,8 +119,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
@@ -135,7 +133,18 @@ CKEDITOR_CONFIGS = {
 
 # settings.py
 
-DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+from google.cloud import storage
 
-# Default primary key field type
-# https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
+# Set the Google Cloud Storage credentials file path
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = './neighborhoods_backend/gskey.json'
+
+# Create a storage client
+storage_client = storage.Client()
+
+# Configure Django's media and static file storage to use Google Cloud Storage
+DEFAULT_FILE_STORAGE = 'storages.backends.gcloud.GoogleCloudStorage'
+GS_BUCKET_NAME = 'love-city-neighborhoods'  # Use the provided bucket name
+
+STATIC_URL = '/static/'  # Replace with the desired URL path for your static files
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
