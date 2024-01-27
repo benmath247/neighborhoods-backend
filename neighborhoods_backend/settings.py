@@ -132,5 +132,10 @@ CKEDITOR_CONFIGS = {
         'width': 600,
     },
 }
+
+# settings.py
+
+DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

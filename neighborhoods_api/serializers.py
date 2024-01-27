@@ -1,7 +1,17 @@
 # serializers.py
 
 from rest_framework import serializers
-from .models import Blog1, Blog2, Blog1Category, Blog2Category, BoardMinutes
+from .models import *
+
+class BoardMemberSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = BoardMember
+        fields = '__all__'
+
+class CommitteeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Committee
+        fields = '__all__'
 
 class Blog1Serializer(serializers.ModelSerializer):
     class Meta:
