@@ -1,12 +1,13 @@
 from django.db import models
 from django.contrib.auth.models import Group
+from ckeditor.fields import RichTextField
 
 # Neighborhood associations all have board minutes that they often upload as a file.
 # They could also make it just text/HTML
 class BoardMinutes(models.Model):
     neighborhood = models.ForeignKey(Group, on_delete=models.CASCADE)
     date = models.DateField()
-    content = models.TextField()
+    content = RichTextField()
     file = models.FileField(upload_to='board_minutes/', null=True, blank=True)
 
     def __str__(self):
@@ -33,7 +34,7 @@ class Blog1(models.Model):
     neighborhood = models.ForeignKey(Group, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     author = models.CharField(max_length=300, null=True, blank=True)
-    content = models.TextField()
+    content = RichTextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     categories = models.ManyToManyField(Blog1Category, blank=True)
@@ -45,7 +46,7 @@ class Blog2(models.Model):
     neighborhood = models.ForeignKey(Group, on_delete=models.CASCADE)
     title = models.CharField(max_length=255)
     author = models.CharField(max_length=300, null=True, blank=True)
-    content = models.TextField()
+    content = RichTextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     categories = models.ManyToManyField(Blog2Category, blank=True)
