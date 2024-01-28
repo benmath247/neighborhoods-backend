@@ -32,6 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -44,6 +45,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -148,3 +150,4 @@ GS_BUCKET_NAME = 'love-city-neighborhoods'  # Use the provided bucket name
 STATIC_URL = '/static/'  # Replace with the desired URL path for your static files
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
+CORS_ALLOW_ALL_ORIGINS = True
