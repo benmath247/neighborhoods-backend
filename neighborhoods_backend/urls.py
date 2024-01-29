@@ -10,6 +10,9 @@ from django.urls import path
 urlpatterns = [
     path('admin/', admin.site.urls),
 
+    # List all Board Members instances for a neighborhood
+    path('api/board-members/neighborhood/<str:neighborhood_name>/', views.BoardMemberByNeighborhood.as_view(), name='board-members-neighborhood'),
+    
     # List all Blog1 instances for a neighborhood
     path('api/blog1/neighborhood/<str:neighborhood_name>/', views.Blog1ListByNeighborhood.as_view(), name='blog1-neighborhood'),
 

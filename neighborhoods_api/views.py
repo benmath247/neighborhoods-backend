@@ -1,8 +1,8 @@
 # views.py
 
 from rest_framework import generics
-from .models import Blog1, Blog2, Blog1Category, Blog2Category, BoardMinutes
-from .serializers import Blog1Serializer, Blog2Serializer, Blog1CategorySerializer, Blog2CategorySerializer, BoardMinutesSerializer
+from .models import Blog1, Blog2, Blog1Category, Blog2Category, BoardMinutes, BoardMember
+from .serializers import Blog1Serializer, Blog2Serializer, Blog1CategorySerializer, Blog2CategorySerializer, BoardMinutesSerializer, BoardMemberSerializer
 from django.shortcuts import get_object_or_404
 from django.contrib.auth.models import Group
 from google.cloud import storage
@@ -30,6 +30,13 @@ class Blog1ListByNeighborhood(generics.ListAPIView):
     def get_queryset(self):
         neighborhood_name = self.kwargs['neighborhood_name']
         return Blog1.objects.filter(neighborhood__name=neighborhood_name)
+    
+class BoardMemberByNeighborhood(generics.ListAPIView):
+    serializer_class = BoardMemberSerializer
+
+    def get_queryset(self):
+        neighborhood_name = self.kwargs['neighborhood_name']
+        return BoardMember.objects.filter(neighborhood__name=neighborhood_name)
     
 # listing all blog1 categoriess for a neighborhood
 class Blog1CategoryListByNeighborhood(generics.ListAPIView):

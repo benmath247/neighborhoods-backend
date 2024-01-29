@@ -12,6 +12,7 @@ class Committee(models.Model):
 
 class BoardMember(models.Model):
     neighborhood = models.ForeignKey(Group, on_delete=models.CASCADE)
+    position = models.CharField(max_length=200, null=True, blank=True)
     committee = models.ManyToManyField(Committee)
     picture = models.ImageField(upload_to='images/', null=True, blank=True)
     name = models.CharField(max_length=200)
@@ -63,6 +64,7 @@ class Blog2Category(models.Model):
 class Blog1(models.Model):
     neighborhood = models.ForeignKey(Group, on_delete=models.CASCADE)
     picture = models.ImageField(upload_to='images/', null=True, blank=True)
+    description = models.CharField(max_length=400, null=True, blank=True)
     title = models.CharField(max_length=255)
     author = models.CharField(max_length=300, null=True, blank=True)
     content = RichTextField(null=True, blank=True)
@@ -80,6 +82,7 @@ class Blog2(models.Model):
     neighborhood = models.ForeignKey(Group, on_delete=models.CASCADE)
     picture = models.ImageField(upload_to='images/', null=True, blank=True)
     title = models.CharField(max_length=255)
+    description = models.CharField(max_length=400, null=True, blank=True)
     author = models.CharField(max_length=300, null=True, blank=True)
     content = RichTextField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
